@@ -27,21 +27,21 @@ class MyIntentServiceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val intentList = mutableListOf<Intent>()
+        val service = MyIntentService()
         val intent = Intent()
+        val intent1 = Intent()
         val intent2 = Intent()
-        val intent3 = Intent()
-        intentList.add(intent.putExtra("timer", 3_000).putExtra("value", 1))
-        intentList.add(intent2.putExtra("timer", 1_000).putExtra("value", 2))
-        intentList.add(intent3.putExtra("timer", 2_000).putExtra("value", 3))
+        service.startMyService(intent.putExtra("timer", 3_000).putExtra("value", 1))
+        service.startMyService(intent1.putExtra("timer", 1_000).putExtra("value", 2))
+        service.startMyService(intent2.putExtra("timer", 3_000).putExtra("value", 3))
         binding.btnStart.setOnClickListener {
-            MyIntentService.handleIntent(intentList)
+            service.handleIntent()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     binding.text.text = it
                 }, {
-                    Log.d("TAG", it.localizedMessage)
+                    Log.d("TAG", "${it.printStackTrace()}")
                 })
         }
     }
