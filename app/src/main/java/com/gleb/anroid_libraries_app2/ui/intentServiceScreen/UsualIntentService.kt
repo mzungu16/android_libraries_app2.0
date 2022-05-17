@@ -15,7 +15,7 @@ class UsualIntentService : IntentService("myThread") {
     override fun onHandleIntent(intent: Intent?) {
         val timer = intent?.getIntExtra("timer", 0)
         val value = intent?.getIntExtra("value", 0)
-        Log.d("TAG", "onHandleIntent start: $value");
+        Log.d("TAG", "onHandleIntent start: $value")
         try {
             if (timer != null) {
                 TimeUnit.SECONDS.sleep(timer.toLong())
