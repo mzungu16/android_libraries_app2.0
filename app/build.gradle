@@ -22,6 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -32,6 +35,11 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.3'
+
+    implementation "io.reactivex.rxjava3:rxjava:3.1.4"
+    implementation "io.reactivex.rxjava3:rxkotlin:3.0.1"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
